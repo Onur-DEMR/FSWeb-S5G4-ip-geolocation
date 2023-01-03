@@ -71,6 +71,7 @@ async function ipAdresimiAl(){
 
 //kodlar buraya gelecek
 function kartOlustur(obje){
+
 	const cardDiv = document.createElement("div");
 	const bayrakImg = document.createElement("img");
 	const cardInfo = document.createElement("div");
@@ -87,6 +88,14 @@ function kartOlustur(obje){
 	h3IpAdresi.classList.add("ip");
 	pUlke.classList.add("ulke");
 
+	bayrakImg.src = obje.ülkebayrağı ;
+	h3IpAdresi.textContent = obje.sorgu ;
+	pUlke.textContent = obje.ülke +"(" + obje.ülkeKodu +")" ;
+	pEnlemBoylam.textContent = "Enlem: " + obje.enlem + "Boylam: "+obje.boylam ;
+    pSaatDilimi.textContent = obje.saatdilimi ;
+    pParaBirimi.textContent = obje.parabirimi ;
+    pIsp.textContent = obje.isp ;
+
 	cardDiv.appendChild(bayrakImg);
 	cardDiv.appendChild(cardInfo);
 	cardInfo.appendChild(h3IpAdresi);
@@ -97,12 +106,19 @@ function kartOlustur(obje){
 	cardInfo.appendChild(pParaBirimi);
 	cardInfo.appendChild(pIsp);
 
-	bayrakImg.src = obje.ülkebayrağı ;
-	h3IpAdresi.textContent = obje.sorgu ;
-	pUlke.textContent = obje.ülke +"(" + obje.ülkeKodu +")" ;
-	pEnlemBoylam.textContent = "Enlem: " + obje.enlem + "Boylam: "+obje.boylam ;
-    pSaatDilimi.textContent = obje.saatdilimi ;
-    pParaBirimi.textContent = obje.parabirimi ;
-    pIsp.textContent = obje.isp ;
+	
 
+	return cardDiv;
 }
+
+const cardsDiv = document.querySelector(".cards") ;
+
+const connection = async function(){
+	await ipAdresimiAl();
+	axios .get("https://apis.ergineer.com/ipgeoapi/"+benimIP) .then((response)=>{
+	cardsDiv.appendChild(kartOlustur(response.data))
+}).catch((error)=>{
+	console.log("Eror: "+error)
+});
+}
+connection();

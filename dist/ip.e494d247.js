@@ -13454,11 +13454,11 @@ function ipAdresimiAl() {
 */
 //kodlar buraya gelecek
 function _ipAdresimiAl() {
-  _ipAdresimiAl = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
+  _ipAdresimiAl = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _context.next = 2;
+          _context2.next = 2;
           return (0, _axios.default)({
             method: 'get',
             url: 'https://apis.ergineer.com/ipadresim'
@@ -13469,9 +13469,9 @@ function _ipAdresimiAl() {
           });
         case 2:
         case "end":
-          return _context.stop();
+          return _context2.stop();
       }
-    }, _callee);
+    }, _callee2);
   }));
   return _ipAdresimiAl.apply(this, arguments);
 }
@@ -13490,6 +13490,13 @@ function kartOlustur(obje) {
   cardInfo.classList.add("card-info");
   h3IpAdresi.classList.add("ip");
   pUlke.classList.add("ulke");
+  bayrakImg.src = obje.ülkebayrağı;
+  h3IpAdresi.textContent = obje.sorgu;
+  pUlke.textContent = obje.ülke + "(" + obje.ülkeKodu + ")";
+  pEnlemBoylam.textContent = "Enlem: " + obje.enlem + "Boylam: " + obje.boylam;
+  pSaatDilimi.textContent = obje.saatdilimi;
+  pParaBirimi.textContent = obje.parabirimi;
+  pIsp.textContent = obje.isp;
   cardDiv.appendChild(bayrakImg);
   cardDiv.appendChild(cardInfo);
   cardInfo.appendChild(h3IpAdresi);
@@ -13499,14 +13506,33 @@ function kartOlustur(obje) {
   cardInfo.appendChild(pSaatDilimi);
   cardInfo.appendChild(pParaBirimi);
   cardInfo.appendChild(pIsp);
-  bayrakImg.src = obje.ülkebayrağı;
-  h3IpAdresi.textContent = obje.sorgu;
-  pUlke.textContent = obje.ülke + "(" + obje.ülkeKodu + ")";
-  pEnlemBoylam.textContent = "Enlem: " + obje.enlem + "Boylam: " + obje.boylam;
-  pSaatDilimi.textContent = obje.saatdilimi;
-  pParaBirimi.textContent = obje.parabirimi;
-  pIsp.textContent = obje.isp;
+  return cardDiv;
 }
+var cardsDiv = document.querySelector(".cards");
+var connection = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return ipAdresimiAl();
+        case 2:
+          _axios.default.get("https://apis.ergineer.com/ipgeoapi/" + benimIP).then(function (response) {
+            cardsDiv.appendChild(kartOlustur(response.data));
+          }).catch(function (error) {
+            console.log("Eror: " + error);
+          });
+        case 3:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return function connection() {
+    return _ref.apply(this, arguments);
+  };
+}();
+connection();
 },{"axios":"node_modules/axios/index.js","babel-core/register":"node_modules/babel-core/register.js","babel-polyfill":"node_modules/babel-polyfill/lib/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
