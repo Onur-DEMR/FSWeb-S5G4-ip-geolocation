@@ -87,5 +87,22 @@ function kartOlustur(obje){
 	h3IpAdresi.classList.add("ip");
 	pUlke.classList.add("ulke");
 
-	
+	cardDiv.appendChild(bayrakImg);
+	cardDiv.appendChild(cardInfo);
+	cardInfo.appendChild(h3IpAdresi);
+	cardInfo.appendChild(pUlke);
+	cardInfo.appendChild(pEnlemBoylam);
+	cardInfo.appendChild(pSehir);
+	cardInfo.appendChild(pSaatDilimi);
+	cardInfo.appendChild(pParaBirimi);
+	cardInfo.appendChild(pIsp);
+
+	bayrakImg.src = obje.ülkebayrağı ;
+	h3IpAdresi.textContent = obje.sorgu ;
+	pUlke.textContent = obje.ülke +"(" + obje.ülkeKodu +")" ;
+	pEnlemBoylam.textContent = "Enlem: " + obje.enlem + "Boylam: "+obje.boylam ;
+    pSaatDilimi.textContent = obje.saatdilimi ;
+    pParaBirimi.textContent = obje.parabirimi ;
+    pIsp.textContent = obje.isp ;
+
 }

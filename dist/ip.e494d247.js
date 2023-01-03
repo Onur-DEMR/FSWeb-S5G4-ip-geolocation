@@ -13490,6 +13490,22 @@ function kartOlustur(obje) {
   cardInfo.classList.add("card-info");
   h3IpAdresi.classList.add("ip");
   pUlke.classList.add("ulke");
+  cardDiv.appendChild(bayrakImg);
+  cardDiv.appendChild(cardInfo);
+  cardInfo.appendChild(h3IpAdresi);
+  cardInfo.appendChild(pUlke);
+  cardInfo.appendChild(pEnlemBoylam);
+  cardInfo.appendChild(pSehir);
+  cardInfo.appendChild(pSaatDilimi);
+  cardInfo.appendChild(pParaBirimi);
+  cardInfo.appendChild(pIsp);
+  bayrakImg.src = obje.ülkebayrağı;
+  h3IpAdresi.textContent = obje.sorgu;
+  pUlke.textContent = obje.ülke + "(" + obje.ülkeKodu + ")";
+  pEnlemBoylam.textContent = "Enlem: " + obje.enlem + "Boylam: " + obje.boylam;
+  pSaatDilimi.textContent = obje.saatdilimi;
+  pParaBirimi.textContent = obje.parabirimi;
+  pIsp.textContent = obje.isp;
 }
 },{"axios":"node_modules/axios/index.js","babel-core/register":"node_modules/babel-core/register.js","babel-polyfill":"node_modules/babel-polyfill/lib/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
