@@ -1,4 +1,4 @@
-//axios import buraya gelecek
+import axios from 'axios';
 
 var benimIP;
 
@@ -25,7 +25,7 @@ async function ipAdresimiAl(){
 /*
 	ADIM 1: axios kullanarak, aşağıdaki URL'ye GET sorgusu atacağız
     (tag içindeki yere kendi ipnizi yazarak URL'yi oluşturun):
-    https://apis.ergineer.com/ipgeoapi/<ipniz>
+    https://apis.ergineer.com/ipgeoapi/95.15.195.62
 	
 	NOT: Bilgisayarın IP adresini öğrenmek için: https://apis.ergineer.com/ipadresim 
 	ADIM 5'e gelene kadar fonksiyonunuzu test etmek için ip nizi URL'ye manuel olarak ekleyebilirsiniz.
@@ -70,3 +70,22 @@ async function ipAdresimiAl(){
 
 
 //kodlar buraya gelecek
+function kartOlustur(obje){
+	const cardDiv = document.createElement("div");
+	const bayrakImg = document.createElement("img");
+	const cardInfo = document.createElement("div");
+	const h3IpAdresi = document.createElement("h3");
+	const pUlke = document.createElement("p");
+	const pEnlemBoylam = document.createElement("p");
+	const pSehir = document.createElement("p");
+	const pSaatDilimi = document.createElement("p");
+	const pParaBirimi = document.createElement("p");
+	const pIsp = document.createElement("p");
+
+	cardDiv.classList.add("card");
+	cardInfo.classList.add("card-info");
+	h3IpAdresi.classList.add("ip");
+	pUlke.classList.add("ulke");
+
+	
+}
